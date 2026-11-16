@@ -1,0 +1,30 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "sand3d-mcp"
+version = "0.1.0"
+description = "Unofficial MCP server to search and download 3D objects (GLB + generating program) from the open Sand3D catalog by Sandflow"
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+requires-python = ">=3.10"
+dependencies = [
+    "mcp>=1.12,<2",
+    "pillow>=9.2",
+]
+keywords = ["mcp", "3d", "glb", "gltf", "three.js", "sand3d"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Topic :: Multimedia :: Graphics :: 3D Modeling",
+]
+
+[project.scripts]
+sand3d-mcp = "sand3d_mcp.server:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/sand3d_mcp"]
+
+[tool.hatch.build.targets.sdist]
+include = ["src/sand3d_mcp", "README.md", "LICENSE", "tests/smoke.py"]
